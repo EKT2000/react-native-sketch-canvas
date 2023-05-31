@@ -156,9 +156,11 @@ class SketchCanvas extends React.Component {
   }
 
   componentDidUpdate(nextProps) {
-    this.setState({
+    if (this.props && this.props.text) {
+      this.setState({
       text: this._processText(nextProps.text ? nextProps.text.map(t => Object.assign({}, t)) : null)
-    })
+      });
+    }
   }
 
   _processText(text) {
